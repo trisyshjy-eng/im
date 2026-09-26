@@ -16,6 +16,16 @@ export function todayDateString(): string {
   return kstDateFormatter.format(new Date());
 }
 
+/**
+ * timestamptz(예: created_at)를 "YYYY-MM-DD" 캘린더 날짜로 바꿀 때 사용한다.
+ * isoString.slice(0, 10) 은 DB가 반환하는 UTC ISO 문자열을 그대로 잘라
+ * UTC 날짜를 보여주므로, 한국 시간 00~09시 사이에 등록/수정된 항목은
+ * 하루 전 날짜로 표시되는 문제가 있다.
+ */
+export function toKstDateString(isoString: string): string {
+  return kstDateFormatter.format(new Date(isoString));
+}
+
 export function yearMonthOf(dateStr: string): string {
   return dateStr.slice(0, 7);
 }

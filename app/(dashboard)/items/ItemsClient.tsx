@@ -7,6 +7,7 @@ import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
 import { inputClass } from "@/components/ui/form";
 import { formatDateShort } from "@/lib/utils/format";
+import { toKstDateString } from "@/lib/utils/date";
 import { deleteItemAction } from "@/lib/actions/items";
 import { ItemForm } from "./ItemForm";
 
@@ -97,7 +98,7 @@ export function ItemsClient({
                   />
                 </td>
                 <td className="px-5 py-3 text-muted-foreground">
-                  {formatDateShort(item.created_at.slice(0, 10))}
+                  {formatDateShort(toKstDateString(item.created_at))}
                 </td>
                 {canManage && (
                   <td className="px-5 py-3">
