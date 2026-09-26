@@ -117,7 +117,7 @@ as
 select distinct on (item_id)
   item_id, entry_date, stock_qty, stock_amount_g
 from public.daily_stock_entries
-where entry_date <= current_date
+where entry_date <= (now() at time zone 'Asia/Seoul')::date
 order by item_id, entry_date desc;
 
 grant select on public.current_item_stock to authenticated;
